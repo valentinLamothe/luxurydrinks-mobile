@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "luxurydrinks-mobile",
+    "slug": "luxurydrinks-mobile",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "luxurydrinks-mobile"
+}
