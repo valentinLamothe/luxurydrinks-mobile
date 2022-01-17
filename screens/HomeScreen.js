@@ -6,7 +6,9 @@ import Drinks from './DrinkScreen';
 import CustomDrawer from '../components/CustomDrawer';
 import { Entypo } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
-
+import BackgroundImage from '../assets/fondoLadrillo.jpg';
+import ImageLogo from '../assets/logoluxury.png';
+import ImageDrink from '../assets/Home.jpeg'
 
 const Drawer = createDrawerNavigator(); 
 
@@ -18,19 +20,17 @@ const HomeScreen = ({navigation}) => {
 
     const imageDrink = { uri: "https://i.imgur.com/HiwTa7s.jpg" };
 
-    const bodyBackground = { uri: "https://i.imgur.com/Hg8tLfI.jpg" };
-
     return(
       <SafeAreaView style={{flex: 1, backgroundColor:'#fff'}}>
-      <ImageBackground source={bodyBackground} style={{width: "100%", height: "100%"}} >
-        <ScrollView style={{}}>
+      <ImageBackground source={BackgroundImage} style={{width: "100%", height: "100%"}} >
+        <ScrollView>
             <View style={{
                 flexDirection:'row', 
                 justifyContent: 'space-between', 
                 alignItems: 'center',
                 backgroundColor:'#c8102e'
                 }}>
-                <ImageBackground source={imageLogo} style={{width: 140, height: 50, margin: '2%'}}/>
+                <ImageBackground source={ImageLogo} style={{width: 140, height: 50, margin: '2%'}}/>
                 {/* <Text style={{fontSize: 20, color: 'white', fontWeight: 'bold'}}>Bienvenido a Luxury Drinks</Text> */}
                 {/* <ImageBackground  
                 source={imageUser} 
@@ -41,7 +41,7 @@ const HomeScreen = ({navigation}) => {
                 <Text style={{color: 'white', padding: 10, fontWeight: 'bold', fontSize: 20}}>MENU</Text>
                 </TouchableOpacity>
             </View>
-          <ImageBackground source={imageDrink} style={{width: '100%', height: 400}}>
+          <ImageBackground source={ImageDrink} style={{width: '100%', height: 400}}>
             <View style={{justifyContent: 'center', alignItems: 'center', height: 400}}>
             <Text style={styles.titleStyle}>EL GIN</Text>
             <Text style={styles.titleStyle}>MÁS</Text>

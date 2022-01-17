@@ -1,66 +1,111 @@
-import React, {useRef} from 'react';
+import React, {useState} from 'react';
 import { View, Text, ImageBackground, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
-import { useDispatch } from "react-redux";
 import { showMessage, hideMessage } from "react-native-flash-message"
 import usersActions from '../redux/actions/authActions';
+import LadrilloBackground from '../assets/fondoLadrillo.jpg'
+import { connect } from "react-redux";
 
-const SignIn = ({navigation}) => {
 
-const dispatch = useDispatch();
+const SignInScreen = (props) => {
 
-  const email = useRef()
-  const password = useRef()
+// const dispatch = useDispatch();
 
-  const loguearse = async(e) =>{
-    if(email.current.value !== '' && password.current.value !== ''){
+//   const email = useRef()
+//   const password = useRef()
 
-      try{
+//   console.log(email.current);
+//   console.log(password.current);
+
+//   const loguearse = async(e) =>{
+//     if(email.current.value !== '' && password.current.value !== ''){
+
+//       try{
         
-        const respuesta = await dispatch(
-          usersActions.signInUser({
-            email: email.current.value,
-            password: password.current.value,
-          })
-          );
+//         const respuesta = await dispatch(
+//           usersActions.signInUser({
+//             email: email.current.value,
+//             password: password.current.value,
+//           })
+//           );
 
-          if(respuesta.data.success){
-            showMessage({
-              message: `Bienvenido ${respuesta.data.response.firstName}`,
-              type: 'success'
-            })
-            email.current.value = ''
-            password.current.value = ''
-          }else{
-            showMessage({
-            message: respuesta.data.response,
-            type: 'danger'
-          })}
+//           if(respuesta.data.success){
+//             showMessage({
+//               message: `Bienvenido ${respuesta.data.response.firstName}`,
+//               type: 'success'
+//             })
+//             email.current.value = ''
+//             password.current.value = ''
+//           }else{
+//             showMessage({
+//             message: respuesta.data.response,
+//             type: 'danger'
+//           })}
           
-        }catch(err){console.log(err)}
-      }else{
-        showMessage({
+//         }catch(err){console.log(err)}
+//       }else{
+//         showMessage({
+//           type: 'danger',
+//           message: 'Completa los campos'
+//         })
+//       }
+//   }
+
+const [signUser, setSignUser] = useState ({
+  email: "", 
+  password: "",
+})
+
+const [ errorInput, setErrorInput ] = useState(null)
+
+const inputHandler = (e, field, value) => {
+  setSignUser({
+      ...signUser, 
+      [field]: e || value
+  })
+}
+
+const submitForm = () => {
+  let info = Object.values(signUser).some(infoUser => infoUser === "")
+  if(info) {
+      showMessage({
           type: 'danger',
           message: 'Completa los campos'
-        })
-      }
+      })
+  } else {
+    props.signIn(signUser)
+      .then(response => {
+          if(!response.data.success) {
+              showMessage({
+               type: 'danger',
+               message: 'Email o/y contraseña incorrecta'
+             })
+          } else {
+              showMessage({
+                  type: 'success',
+                  message: `Bienvenido ${response.data.response.firstName}!`
+              })
+          }
+      })
+      .catch((err) => showMessage({
+          type: 'danger',
+          message: err
+      }))
   }
+}
 
-
-
-    const backgroundImage = { uri: 'https://i.imgur.com/ERFa48c.jpg' };
 
     return (
-        <ImageBackground source={backgroundImage} resizeMode="cover" style={{ width: '100%', height: '100%' }}>
+        <ImageBackground source={LadrilloBackground} resizeMode="cover" style={{ width: '100%', height: '100%' }}>
             <View style={{flex: 1, justifyContent:"center", alignItems: 'center'}}>
                 <View>
                     <Text style={{ fontWeight: 'bold', fontSize: 26, padding: 10, textAlign: 'center' }}>Sign in </Text>
-                    <TextInput style={styles.inputStyle} ref={email} type="text" name="email" placeholder="E-mail" />
-                    <TextInput style={styles.inputStyle} ref={password} secureTextEntry={true} name="password" placeholder="Contraseña" />
-                    <TouchableOpacity style={{ backgroundColor: '#c8102e', width:'20%', padding: '2%', borderRadius: '3%'}} name="signup_submit" onPress={() => loguearse()} value="Sign me up">
+                    <TextInput  style={styles.inputStyle} onChangeText={e => {inputHandler(e, 'email')}}  placeholder="E-mail" />
+                    <TextInput  style={styles.inputStyle} onChangeText={e => {inputHandler(e, 'password')}}  secureTextEntry={true}  placeholder="Contraseña" />
+                    <TouchableOpacity style={{ backgroundColor: '#c8102e', width:'20%', padding: '2%', borderRadius: '3%'}} name="signup_submit" onPress={() => submitForm()} value="Sign me up">
                       <Text style={{ fontWeight: 'bold', color: 'white', fontSize: 18 }}>Sign in</Text>
                       </TouchableOpacity>
                     <Text style={{ marginTop: 10 }}>¿Todavia no tenes una cuenta?</Text>
-                    <TouchableOpacity style={{backgroundColor: '#c8102e', width: '40%', padding: '2%'}} onPress={() => navigation.navigate('SignUp')}>
+                    <TouchableOpacity style={{backgroundColor: '#c8102e', width: '40%', padding: '2%'}} onPress={() => props.navigation.navigate('SignUp')}>
                       <Text style={{fontSize: 18, fontWeight: 'bold', color: 'white'}}>Registrate</Text>
                     </TouchableOpacity>
                 </View>
@@ -79,4 +124,16 @@ const styles = StyleSheet.create({
   }
 })
 
-export default SignIn
+// const mapStateToProps = state => {
+//   return {
+//       userName: state.authReducer.userName,
+//       email: state.authReducer.email,
+//       userImage: state.authReducer.userImage
+//   }
+// }
+
+const mapDispatchToProps = {
+  signIn: usersActions.signInUser
+}
+
+export default connect (null, mapDispatchToProps) (SignInScreen)

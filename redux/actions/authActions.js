@@ -17,9 +17,11 @@ const authActions = {
     signInUser: (logUser) => {
         return async (dispatch, getState) => {
             const res = await axios.post('https://backendparavalen.herokuapp.com/api/user/login', { ...logUser })
+            console.log('actionAuth:', res);
             if (res.data.success && !res.data.error) {
                 // localStorage.setItem('token', res.data.response.token)
                 dispatch({ type: 'LOG_USER', payload: { _id: res.data.response._id, token: res.data.response.token, userImg: res.data.response.img, firstName: res.data.response.name, role: res.data.response.role } })
+                console.log(res);
                 return res
             } else {
                 return res

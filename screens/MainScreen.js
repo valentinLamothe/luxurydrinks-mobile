@@ -1,22 +1,20 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Image, ImageBackground } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-
+import DrinkImage from '../assets/Gin.png'
+import BackgroundImage from '../assets/fondoMarmol.jpg'
 
 const MainScreen = ({navigation}) => {
 
-    const image = { uri: "https://i.imgur.com/DCJqoHX.png"  };
-
-    const backgroundImage = { uri: 'https://i.imgur.com/ERFa48c.jpg' };
 
     return (
-      <ImageBackground source={backgroundImage} style={{width: '100%', height: '100%'}}>
+      <ImageBackground source={BackgroundImage} style={{width: '100%', height: '100%'}}>
       <SafeAreaView style={styles.container}>
       <View style={{marginTop:20}}>
         <Text style={styles.title}>LUXURY DRINKS</Text>
       </View>
       <View style={styles.containerImg}>
-      <Image source={image}  style={styles.image} />
+      <Image source={DrinkImage}  style={styles.image} />
       </View>
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home')}>
         <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18, textShadowColor: 'rgba(0, 0, 0, 0.30)',
