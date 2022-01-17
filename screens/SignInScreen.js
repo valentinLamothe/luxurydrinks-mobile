@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { View, Text, ImageBackground, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
 import { showMessage, hideMessage } from "react-native-flash-message"
 import usersActions from '../redux/actions/authActions';
-import LadrilloBackground from '../assets/fondoLadrillo.jpg'
+import MarmolBackground from '../assets/fondoMarmol.jpg'
 import { connect } from "react-redux";
 
 
@@ -50,6 +50,9 @@ const SignInScreen = (props) => {
 //       }
 //   }
 
+console.log('userProps:', props.user);
+
+
 const [signUser, setSignUser] = useState ({
   email: "", 
   password: "",
@@ -69,7 +72,7 @@ const submitForm = () => {
   if(info) {
       showMessage({
           type: 'danger',
-          message: 'Completa los campos'
+          message: 'Hay campos incompletos, porfavor completar'
       })
   } else {
     props.signIn(signUser)
@@ -95,7 +98,7 @@ const submitForm = () => {
 
 
     return (
-        <ImageBackground source={LadrilloBackground} resizeMode="cover" style={{ width: '100%', height: '100%' }}>
+        <ImageBackground source={MarmolBackground} resizeMode="cover" style={{ width: '100%', height: '100%' }}>
             <View style={{flex: 1, justifyContent:"center", alignItems: 'center'}}>
                 <View>
                     <Text style={{ fontWeight: 'bold', fontSize: 26, padding: 10, textAlign: 'center' }}>Sign in </Text>
@@ -124,16 +127,15 @@ const styles = StyleSheet.create({
   }
 })
 
-// const mapStateToProps = state => {
-//   return {
-//       userName: state.authReducer.userName,
-//       email: state.authReducer.email,
-//       userImage: state.authReducer.userImage
-//   }
-// }
+const mapStateToProps = state => {
+  return {
+      user: state.authReducers.user,
+      userImage: state.authReducers.img
+  }
+}
 
 const mapDispatchToProps = {
   signIn: usersActions.signInUser
 }
 
-export default connect (null, mapDispatchToProps) (SignInScreen)
+export default connect (mapStateToProps, mapDispatchToProps) (SignInScreen)

@@ -3,7 +3,7 @@ import { View, Text, ImageBackground, TextInput, TouchableOpacity, SafeAreaView 
 // import { useDispatch } from "react-redux";
 import { showMessage, hideMessage } from "react-native-flash-message"
 import usersActions from '../redux/actions/authActions';
-import LadrilloBackground from '../assets/fondoLadrillo.jpg'
+import marmolBackground from '../assets/fondoMarmol.jpg'
 import { connect } from "react-redux";
 
 const SignUpScreen = (props) => {
@@ -89,7 +89,7 @@ const SignUpScreen = (props) => {
     let info = Object.values(newUser).some(infoUser => infoUser === '')
     if(info) {
       showMessage({
-        message: 'There are fields incomplete, please complete them',
+        message: 'Hay campos incompletos, porfavor completar',
         type: 'danger'
       })
     } else {
@@ -117,7 +117,7 @@ const SignUpScreen = (props) => {
       .catch(error => {
         console.log(error)
         showMessage({
-          message: 'We are facing technical difficulties! Come back later!',
+          message: 'Estamos con problemas tecnicos! Porfavor vuelve mas tarde!',
           type: 'danger'
         })
       })
@@ -128,7 +128,7 @@ const SignUpScreen = (props) => {
     return (
         <>
             <SafeAreaView >
-                <ImageBackground source={LadrilloBackground} resizeMode="cover" style={{ width: '100%', height: '100%' }}>
+                <ImageBackground source={marmolBackground} resizeMode="cover" style={{ width: '100%', height: '100%' }}>
                     <View style={{flex: 1, justifyContent:"center", alignItems: 'center'}}>
                             <View>
                                 <View>

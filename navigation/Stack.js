@@ -4,6 +4,7 @@ import MainScreen from '../screens/MainScreen';
 import DrinkScreen from '../screens/DrinkScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 import SignInScreen from '../screens/SignInScreen';
+import OneDrinkScreen from '../screens/OneDrinkScreen';
 
 
 const StackNav = createNativeStackNavigator();
@@ -16,6 +17,7 @@ const Stack = () => {
         <StackNav.Screen component={DrinkScreen} name="Drinks" options={{headerShown: false}} />
         <StackNav.Screen component={SignUpScreen} name="SignUp" options={{headerShown: false}} />
         <StackNav.Screen component={SignInScreen} name="SignIn" options={{headerShown: false}} />
+        <StackNav.Screen component={OneDrinkScreen} name="OneDrink" options={{headerShown: false}} />
       </StackNav.Navigator>     
   );
 }
