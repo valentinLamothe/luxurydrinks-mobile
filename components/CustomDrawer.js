@@ -14,6 +14,8 @@ const CustomDrawer = props => {
                     <DrawerItemList {...props} />
                 </View>
             </DrawerContentScrollView>
+            {props.user !== null 
+            ?  
              <TouchableOpacity onPress={() => props.logOut()}>
                 <View style={{ padding: 20, borderTopWidth: 1, borderTopColor: '#ccc' }}>
                     <View style={{flexDirection: 'row', alignItems: 'center'}}>
@@ -22,12 +24,23 @@ const CustomDrawer = props => {
                     </View>
                 </View>
              </TouchableOpacity>
+            : 
+            <>
+            </> 
+            }
         </View>
     )
 }
+
+const mapStateToProps = state => {
+    return {
+        user: state.authReducers.user,
+        userImage: state.authReducers.img
+    }
+  }
 
 const mapDispatchToProps = {
     logOut: userActions.logOut
   }
 
-export default connect(null, mapDispatchToProps)(CustomDrawer);
+export default connect(mapStateToProps, mapDispatchToProps)(CustomDrawer);
