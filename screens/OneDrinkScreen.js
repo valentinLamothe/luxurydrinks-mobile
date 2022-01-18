@@ -10,8 +10,6 @@ const OneDrinkScreen = (props) => {
 
   const { drinks, fetchProducts, route } = props;
 
-  console.log('propsDrink:', props);
-
   const id = route.params.params;
 
   useEffect(() =>{
@@ -19,8 +17,6 @@ const OneDrinkScreen = (props) => {
   }, []);
 
   const currentGin = drinks.find(drink => drink._id === id)
-
-  console.log('el gin:',currentGin);
 
     return (
         <SafeAreaView>

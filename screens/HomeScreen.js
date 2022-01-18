@@ -12,6 +12,11 @@ import ImageDrink from '../assets/Home.jpeg'
 import CarouselRender from '../components/CarouselRender';
 import FirstHomeImage from '../assets/1home.png';
 import SecondHomeImage from '../assets/2home.png';
+import usersActions from '../redux/actions/authActions';
+import { connect } from "react-redux";
+import CarritoScreen from '../screens/CarritoScreen';
+import { AntDesign } from '@expo/vector-icons';
+
 
 const Drawer = createDrawerNavigator(); 
 
@@ -73,7 +78,7 @@ const HomeScreen = ({navigation}) => {
     )
 }
 
-const HomeNavigate = () => {
+const HomeNavigate = (props) => {
     return (
     <Drawer.Navigator 
         drawerContent={props => <CustomDrawer {...props} />}
@@ -94,19 +99,40 @@ const HomeNavigate = () => {
             return <Entypo name="drink" size={24} color="black" />
           }
         }} />
+        { props.user !== null ?
+          <>
+            <Drawer.Screen name="Carrito" component={CarritoScreen} options={{
+                headerShown: false, 
+                drawerIcon: () => {
+                  return <AntDesign name="shoppingcart" size={24} color="black" />
+                }
+              }} />
+          </> 
+          :
         <Drawer.Screen name="Registrarse" component={SignUpScreen} options={{
-                        
           headerShown: false, 
           drawerIcon: () => {
             return <Feather name="user-plus" size={24} color="black" />
           }
         }} />
-        <Drawer.Screen name="Ingresar" component={SignInScreen} options={{
-          headerShown: false, 
-          drawerIcon: () => {
-            return <Entypo name="login" size={24} color="black" />
-          }
-        }} />
+      }
+        {props.user !== null ? 
+              <Drawer.Screen name="Perfil" component={SignInScreen} options={{
+                headerShown: false, 
+                drawerIcon: () => {
+                  return <AntDesign name="user" size={24} color="black" />
+                }
+              }} />
+              :
+              <Drawer.Screen name="Ingresar" component={SignInScreen} options={{
+                headerShown: false, 
+                drawerIcon: () => {
+                  return <Entypo name="login" size={24} color="black" />
+                }
+              }} />
+              
+      }
+        
     </Drawer.Navigator>
     )
 }
@@ -122,5 +148,16 @@ const styles = StyleSheet.create({
   }
 })
 
+const mapStateToProps = state => {
+  return {
+      user: state.authReducers.user,
+      userImage: state.authReducers.img
+  }
+}
 
-export default HomeNavigate
+const mapDispatchToProps = {
+  signIn: usersActions.signInUser
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeNavigate)

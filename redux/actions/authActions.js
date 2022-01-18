@@ -5,8 +5,9 @@ const authActions = {
         return async (dispatch, getState) => {
             const res = await axios.post('https://backendparavalen.herokuapp.com/api/user/signup', newUser)
             if (res.data.success && !res.data.error) {
+                console.log('authaction:',res.data.response);
                 // localStorage.setItem('token', res.data.response.token)
-                dispatch({ type: 'LOG_USER', payload: { _id: res.data.response._id, token: res.data.response.token, userImg: res.data.response.img, firstName: res.data.response.firstName  , role: res.data.response.role } });
+                dispatch({ type: 'LOG_USER', payload: res.data.response });
                 return res
             } else {
                 return res
@@ -18,7 +19,7 @@ const authActions = {
             const res = await axios.post('https://backendparavalen.herokuapp.com/api/user/login', { ...logUser })
             if (res.data.success && !res.data.error) {
                 // localStorage.setItem('token', res.data.response.token)
-                dispatch({ type: 'LOG_USER', payload: { _id: res.data.response._id, token: res.data.response.token, userImg: res.data.response.img, firstName: res.data.response.firstName, role: res.data.response.role } })
+                dispatch({ type: 'LOG_USER', payload: res.data.response })
                 return res
             } else {
                 return res

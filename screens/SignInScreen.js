@@ -71,9 +71,10 @@ const submitForm = () => {
             <ImageBackground source={backgroundUser} style={{width: '100%', height: '100%'}}>
               <View style={{flex: 1, justifyContent:"center", alignItems: 'center'}}>
                 <Text style={{fontSize: 30, marginBottom: '5%', fontWeight: '900'}}>Bienvenido: {props.user.firstName}</Text>
+                <Text>Email: {props.user.email}</Text>
                 <Image source={{uri: props.user.userImg}} style={{width: 200, height: 300, borderRadius: 100}} />
-          <TouchableOpacity onPress={() => props.navigation.navigate('Home')}>
-            <Text>Volver al sitio</Text>
+          <TouchableOpacity onPress={() => props.navigation.navigate('Home')} style={{backgroundColor:'#c8102e', padding: '5%', borderRadius: 5, marginTop: '10%'}}>
+            <Text style={{color: 'white', fontSize: 20, fontWeight: '900'}}>Volver al sitio</Text>
           </TouchableOpacity>
           </View>
           </ImageBackground>

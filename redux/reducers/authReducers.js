@@ -12,8 +12,6 @@ const authReducers = (
             ...state,
             user: action.payload,
             token: action.payload.token,
-            img: action.payload.img,
-            role: action.payload.range
         }
 
     } else if (action.type === 'LOG_OUT') {

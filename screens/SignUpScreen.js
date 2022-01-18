@@ -8,67 +8,6 @@ import { connect } from "react-redux";
 
 const SignUpScreen = (props) => {
 
-  // const firstName = useRef();
-  // const lastName = useRef();
-  // const email = useRef();
-  // const password = useRef();
-  // const userImg = useRef();
-  // const age = useRef();
-
-  // const dispatch = useDispatch();
-
-
-  // const crearUsuario = async (e) => {
-  //   if (
-  //     firstName.current.value !== "" &&
-  //     lastName.current.value !== "" &&
-  //     email.current.value &&
-  //     password.current.value &&
-  //     userImg.current.value &&
-  //     age.current.value
-  //   ) {
-  //     try {
-  //       const respuesta = await dispatch(
-  //         usersActions.signUpUser({
-  //           firstName: firstName.current.value,
-  //           lastName: lastName.current.value,
-  //           email: email.current.value,
-  //           password: password.current.value,
-  //           userImg: userImg.current.value,
-  //           age: age.current.value
-  //         })
-  //       );
-
-  //       if (respuesta.data.success) {
-  //         showMessage({
-  //           message: `Gracias por registrarte ${respuesta.data.response.newUser.firstName}`,
-  //           type: "success",
-  //         });
-  //       } else if (respuesta.data.error) {
-  //         showMessage({
-  //           message: `${respuesta.data.error}`,
-  //           type: "danger",
-  //         });
-  //       } else {
-  //         respuesta.data.errors.map((e) => {
-  //           showMessage({
-  //             message: e.message,
-  //             type: "danger",
-  //           });
-  //         });
-  //       }
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   } else {
-  //     showMessage({
-  //       message: "Complete los campos porfavor!",
-  //       type: "danger",
-  //     });
-  //   }
-  // };
-
-
   const [newUser, setNewUser] = useState({
     firstName: "",
     lastName: "",
@@ -133,12 +72,12 @@ const SignUpScreen = (props) => {
                             <View>
                                 <View style={{ backgroundColor: 'white', paddingLeft: '14%', paddingRight: '14%', borderRadius: '8%'}}>
                                     <Text style={{ fontWeight: 'bold', fontSize: 26, padding: 10, textAlign: 'center', marginBottom: '5%'}}>Registrarse</Text>
-                                    <TextInput style={{fontSize: 19, padding: 10, fontWeight: 'bold', borderBottom: '1', borderWidth: 1, marginBottom: '4%', borderRadius: '2%'}} type="text" onChangeText={e => {inputHandler(e, 'firstName')}} placeholder="Nombre" />
-                                    <TextInput style={{fontSize: 19, padding: 10, fontWeight: 'bold', border: 'black', borderWidth: 1, marginBottom: '4%', borderRadius: '2%'}} type="text" onChangeText={e => {inputHandler(e, 'lastName')}} name="apellido" placeholder="Apellido" />
-                                    <TextInput style={{fontSize: 19, padding: 10, fontWeight: 'bold', border: 'black', borderWidth: 1, marginBottom: '4%', borderRadius: '2%'}} type="number" onChangeText={e => {inputHandler(e, 'age')}} name="age" placeholder="Edad" />
-                                    <TextInput style={{fontSize: 19, padding: 10, fontWeight: 'bold', border: 'black', borderWidth: 1, marginBottom: '4%', borderRadius: '2%'}} type="text" onChangeText={e => {inputHandler(e, 'email')}} name="email" placeholder="E-mail" />
-                                    <TextInput style={{fontSize: 19, padding: 10, fontWeight: 'bold', border: 'black', borderWidth: 1, marginBottom: '4%', borderRadius: '2%'}} onChangeText={e => {inputHandler(e, 'password')}} name="password" placeholder="Contraseña" secureTextEntry={true} />
-                                    <TextInput style={{fontSize: 19, padding: 10, fontWeight: 'bold', border: 'black', borderWidth: 1, marginBottom: '4%', borderRadius: '2%'}} type="url" onChangeText={e => {inputHandler(e, 'userImg')}} name="userImage" placeholder="Imagen de perfil" />
+                                    <TextInput style={{fontSize: 19, padding: 10, fontWeight: 'bold', borderWidth: 1, marginBottom: '4%', borderRadius: 3}} type="text" onChangeText={e => {inputHandler(e, 'firstName')}} placeholder="Nombre" />
+                                    <TextInput style={{fontSize: 19, padding: 10, fontWeight: 'bold', borderWidth: 1, marginBottom: '4%', borderRadius: 3}} type="text" onChangeText={e => {inputHandler(e, 'lastName')}} name="apellido" placeholder="Apellido" />
+                                    <TextInput style={{fontSize: 19, padding: 10, fontWeight: 'bold', borderWidth: 1, marginBottom: '4%', borderRadius: 3}} type="number" onChangeText={e => {inputHandler(e, 'age')}} name="age" placeholder="Edad" />
+                                    <TextInput style={{fontSize: 19, padding: 10, fontWeight: 'bold', borderWidth: 1, marginBottom: '4%', borderRadius: 3}} type="text" onChangeText={e => {inputHandler(e, 'email')}} name="email" placeholder="E-mail" />
+                                    <TextInput style={{fontSize: 19, padding: 10, fontWeight: 'bold', borderWidth: 1, marginBottom: '4%', borderRadius: 3}} onChangeText={e => {inputHandler(e, 'password')}} name="password" placeholder="Contraseña" secureTextEntry={true} />
+                                    <TextInput style={{fontSize: 19, padding: 10, fontWeight: 'bold', borderWidth: 1, marginBottom: '4%', borderRadius: 3}} type="url" onChangeText={e => {inputHandler(e, 'userImg')}} name="userImage" placeholder="Imagen de perfil" />
                                     <TouchableOpacity name="signup_submit" onPress={() => submitForm()} value="Sign me up">
                                     <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#c8102e', textAlign: 'center', margin: '2%' }}>
                                     Registrate
