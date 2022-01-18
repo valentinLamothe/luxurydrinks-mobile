@@ -9,16 +9,13 @@ import { Feather } from '@expo/vector-icons';
 import BackgroundImage from '../assets/fondoLadrillo.jpg';
 import ImageLogo from '../assets/logoluxury.png';
 import ImageDrink from '../assets/Home.jpeg'
+import CarouselRender from '../components/CarouselRender';
+import FirstHomeImage from '../assets/1home.png';
+import SecondHomeImage from '../assets/2home.png';
 
 const Drawer = createDrawerNavigator(); 
 
 const HomeScreen = ({navigation}) => {
-
-    const imageUser = { uri: "https://i.imgur.com/kGvMbiI.jpg"  };
-
-    const imageLogo = { uri: "https://i.imgur.com/N38IJLG.png"  };
-
-    const imageDrink = { uri: "https://i.imgur.com/HiwTa7s.jpg" };
 
     return(
       <SafeAreaView style={{flex: 1, backgroundColor:'#fff'}}>
@@ -31,12 +28,6 @@ const HomeScreen = ({navigation}) => {
                 backgroundColor:'#c8102e'
                 }}>
                 <ImageBackground source={ImageLogo} style={{width: 140, height: 50, margin: '2%'}}/>
-                {/* <Text style={{fontSize: 20, color: 'white', fontWeight: 'bold'}}>Bienvenido a Luxury Drinks</Text> */}
-                {/* <ImageBackground  
-                source={imageUser} 
-                style={{width: 35, height: 35}} 
-                imageStyle={{borderRadius: 25}} 
-                /> */}
                 <TouchableOpacity style={{ borderRadius: 5, padding: 5, margin: '2%'}} onPress={() => navigation.openDrawer()}>
                 <Text style={{color: 'white', padding: 10, fontWeight: 'bold', fontSize: 20}}>MENU</Text>
                 </TouchableOpacity>
@@ -59,14 +50,22 @@ const HomeScreen = ({navigation}) => {
             <Text style={{color: '#c8102e', fontSize: 28, fontWeight: 'bold'}}>NUESTRAS</Text>
             <Text style={{color: '#c8102e', fontSize: 28, fontWeight: 'bold'}}>NOVEDADES</Text>
           </View>
-          <View style={{backgroundColor: '#c8102e', width: '90%', height: 450, marginLeft: '5%', marginBottom: '8%'}}>
-
+          <View style={{borderColor: '#c8102e', borderWidth: 3, padding: '2%', width: '90%', height: 450, marginLeft: '5%', marginBottom: '8%', paddingBottom: '10%'}}>
+                <CarouselRender />
           </View>
-          <View style={{backgroundColor: '#c8102e', width: '90%', height: 450, marginLeft: '5%', marginBottom: '8%'}}>
-
+          <View style={{backgroundColor: '#c8102e', width: '90%', height: 450, marginLeft: '5%', marginBottom: '8%', flex: 1, borderRadius: '3%'}}>
+            <View style={{flex: 1, justifyContent: 'center'}}>
+                <Text style={{ color: 'white', fontSize: 25, fontWeight: 'bold', marginLeft: '4%', marginBottom: '2%', marginTop: '7%', textShadowColor: 'rgba(0, 0, 0, 0.75)',textShadowOffset: {width: 0, height: 0},textShadowRadius: 10}}>Hot Negroni</Text>
+                <Text style={{color: 'white', width: '90%', fontSize: 20, marginLeft: '4%', marginBottom: '6%', fontWeight: '600', textShadowColor: 'rgba(0, 0, 0, 0.40)',textShadowOffset: {width: 0, height: 0},textShadowRadius: 10}}>"EMPIEZA EL 2022 DISFRUTANDO DE UN BEEFEATER GIN HOT NEGRONI".</Text>
+                <Image source={FirstHomeImage} style={{width: '100%', height: '65%'}} />
+            </View>
           </View>
-          <View style={{backgroundColor: '#c8102e', width: '90%', height: 450, marginLeft: '5%'}}>
-
+          <View style={{backgroundColor: '#c8102e', width: '90%', height: 450, marginLeft: '5%', borderRadius: '3%', marginBottom: '5%'}}>
+              <Image source={SecondHomeImage} style={{width: '100%', height: '65%'}} />
+              <Text style={{color: 'white', fontSize: 25, fontWeight: 'bold', marginLeft: '5%', marginTop: '5%', textShadowColor: 'rgba(0, 0, 0, 0.75)',
+              textShadowOffset: {width: 0, height: 0},
+              textShadowRadius: 10}}>Smashing Basil Punch</Text>
+              <Text style={{color: 'white', width: '90%', fontSize: 20, fontWeight: '600', marginLeft: '5%', marginTop: '3%', textShadowColor: 'rgba(0, 0, 0, 0.40)',textShadowOffset: {width: 0, height: 0},textShadowRadius: 10}}>"EL DELICIOSO SABOR DE LA ALBAHACA Y EL GIN".</Text>
           </View>
         </ScrollView>
     </ImageBackground>

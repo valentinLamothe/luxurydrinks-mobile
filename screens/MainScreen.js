@@ -48,9 +48,10 @@ const styles = StyleSheet.create({
       marginBottom: 50
     },
     image: {
-      width: 300,
-      height:300,
-      transform: [{ rotate: '-15deg' }]
+      width: 400,
+      height: 500,
+      transform: [{ rotate: '-15deg' }],
+      marginBottom: '15%'
     },
     containerImg: {
       flex: 1,

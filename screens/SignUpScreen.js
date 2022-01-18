@@ -131,22 +131,22 @@ const SignUpScreen = (props) => {
                 <ImageBackground source={marmolBackground} resizeMode="cover" style={{ width: '100%', height: '100%' }}>
                     <View style={{flex: 1, justifyContent:"center", alignItems: 'center'}}>
                             <View>
-                                <View>
-                                    <Text style={{ fontWeight: 'bold', fontSize: 26, padding: 10}}>Sign up</Text>
-                                    <TextInput style={{fontSize: 19, padding: 10, fontWeight: 'bold'}} type="text" onChangeText={e => {inputHandler(e, 'firstName')}} name="userName" placeholder="Nombre" />
-                                    <TextInput style={{fontSize: 19, padding: 10, fontWeight: 'bold'}} type="text" onChangeText={e => {inputHandler(e, 'lastName')}} name="lastName" placeholder="Apellido" />
-                                    <TextInput style={{fontSize: 19, padding: 10, fontWeight: 'bold'}} type="number" onChangeText={e => {inputHandler(e, 'age')}} name="age" placeholder="Edad" />
-                                    {/* <Text className='text-danger'>{errorInput.userName}</Text> */}
-                                    <TextInput style={{fontSize: 19, padding: 10, fontWeight: 'bold'}} type="text" onChangeText={e => {inputHandler(e, 'email')}} name="email" placeholder="E-mail" />
-                                    {/* <Text className="text-danger">{errorInput.email}</Text> */}
-                                    <TextInput style={{fontSize: 19, padding: 10, fontWeight: 'bold'}} onChangeText={e => {inputHandler(e, 'password')}} name="password" placeholder="Contraseña" secureTextEntry={true} />
-                                    {/* <Text className="text-danger">{errorInput.password}</Text> */}
-                                    <TextInput style={{fontSize: 19, padding: 10, fontWeight: 'bold'}} type="url" onChangeText={e => {inputHandler(e, 'userImg')}} name="userImage" placeholder="Imagen de perfil" />
-                                    <TouchableOpacity name="signup_submit" onPress={() => submitForm()} value="Sign me up"><Text style={{ color: 'red', fontWeight: 'bold' }}>Sign Up</Text></TouchableOpacity>
-
-                                    <Text>¿Ya tenes cuenta?</Text>
+                                <View style={{ backgroundColor: 'white', paddingLeft: '14%', paddingRight: '14%', borderRadius: '8%'}}>
+                                    <Text style={{ fontWeight: 'bold', fontSize: 26, padding: 10, textAlign: 'center', marginBottom: '5%'}}>Registrarse</Text>
+                                    <TextInput style={{fontSize: 19, padding: 10, fontWeight: 'bold', borderBottom: '1', borderWidth: 1, marginBottom: '4%', borderRadius: '2%'}} type="text" onChangeText={e => {inputHandler(e, 'firstName')}} placeholder="Nombre" />
+                                    <TextInput style={{fontSize: 19, padding: 10, fontWeight: 'bold', border: 'black', borderWidth: 1, marginBottom: '4%', borderRadius: '2%'}} type="text" onChangeText={e => {inputHandler(e, 'lastName')}} name="apellido" placeholder="Apellido" />
+                                    <TextInput style={{fontSize: 19, padding: 10, fontWeight: 'bold', border: 'black', borderWidth: 1, marginBottom: '4%', borderRadius: '2%'}} type="number" onChangeText={e => {inputHandler(e, 'age')}} name="age" placeholder="Edad" />
+                                    <TextInput style={{fontSize: 19, padding: 10, fontWeight: 'bold', border: 'black', borderWidth: 1, marginBottom: '4%', borderRadius: '2%'}} type="text" onChangeText={e => {inputHandler(e, 'email')}} name="email" placeholder="E-mail" />
+                                    <TextInput style={{fontSize: 19, padding: 10, fontWeight: 'bold', border: 'black', borderWidth: 1, marginBottom: '4%', borderRadius: '2%'}} onChangeText={e => {inputHandler(e, 'password')}} name="password" placeholder="Contraseña" secureTextEntry={true} />
+                                    <TextInput style={{fontSize: 19, padding: 10, fontWeight: 'bold', border: 'black', borderWidth: 1, marginBottom: '4%', borderRadius: '2%'}} type="url" onChangeText={e => {inputHandler(e, 'userImg')}} name="userImage" placeholder="Imagen de perfil" />
+                                    <TouchableOpacity name="signup_submit" onPress={() => submitForm()} value="Sign me up">
+                                    <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#c8102e', textAlign: 'center', margin: '2%' }}>
+                                    Registrate
+                                    </Text>
+                                    </TouchableOpacity>
+                                    <Text style={{textAlign: 'center', marginTop: '6%', marginBottom: '6%', fontSize: 17, fontWeight: '400'}}>¿Ya tenes cuenta?</Text>
                                     <TouchableOpacity onPress={() => props.navigation.navigate('SignIn')}>
-                                        <Text style={{fontSize: 20, fontWeight: 'bold', color: '#c8102e'}}>Ingresa</Text>
+                                        <Text style={{fontSize: 20, fontWeight: 'bold', color: '#c8102e', textAlign: 'center'}}>Ingresa</Text>
                                     </TouchableOpacity>
                                 </View>
                             </View>

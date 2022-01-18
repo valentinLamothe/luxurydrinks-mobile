@@ -50,7 +50,7 @@ const DrinkScreen = (props) => {
                         {auxiliar.map(drink => {
                             return <View key={drink._id} style={{ justifyContent: 'center', alignItems: 'center', margin: '7%' }}>
                                 <View style={{ flexDirection: 'row'}}>
-                                <Image source={{uri: drink.drinkImg}} style={{ width: 200, height: 200, marginBottom: '3%' }} />
+                                <Image source={{uri: drink.drinkImg}} style={{ width: 230, height: 300, marginBottom: '3%' }} />
                                 <TouchableOpacity onPress={() => props.navigation.navigate('OneDrink', {params: drink._id})}>
                                 <AntDesign name="infocirlce" size={28} color="#c8102e" />
                                 </TouchableOpacity>

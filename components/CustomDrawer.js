@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import { AntDesign } from '@expo/vector-icons';
+import { connect } from "react-redux";
+import userActions from '../redux/actions/authActions';
 
 const CustomDrawer = props => {
 
@@ -12,7 +14,7 @@ const CustomDrawer = props => {
                     <DrawerItemList {...props} />
                 </View>
             </DrawerContentScrollView>
-             <TouchableOpacity>
+             <TouchableOpacity onPress={() => props.logOut()}>
                 <View style={{ padding: 20, borderTopWidth: 1, borderTopColor: '#ccc' }}>
                     <View style={{flexDirection: 'row', alignItems: 'center'}}>
                     <AntDesign name="man" size={24} color="black" />
@@ -24,4 +26,8 @@ const CustomDrawer = props => {
     )
 }
 
-export default CustomDrawer
+const mapDispatchToProps = {
+    logOut: userActions.logOut
+  }
+
+export default connect(null, mapDispatchToProps)(CustomDrawer);
