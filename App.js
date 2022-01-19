@@ -6,6 +6,7 @@ import {createStore, applyMiddleware} from 'redux';
 import rootReducer from "./redux/reducers/rootReducer";
 import thunk from "redux-thunk";
 import FlashMessage from "react-native-flash-message";
+import DataProvider from './DataProvider';
 
 
 
@@ -15,10 +16,12 @@ export default function App() {
 
   return (
     <Provider store={globalStore}>
+      <DataProvider>
       <NavigationContainer>
           <StackNavigation />
       </NavigationContainer>
       <FlashMessage position="top"  /> 
+      </DataProvider>
     </Provider>
   );
 }

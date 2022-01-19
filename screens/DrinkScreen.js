@@ -1,15 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { View, Text, SafeAreaView, Image, ImageBackground, TextInput, TouchableOpacity, ScrollView, ActivityIndicator } from 'react-native';
 import { connect } from "react-redux";
 import productAction from '../redux/actions/productAction';
 import marmolBackground from '../assets/fondoMarmol.jpg'
 import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
-
-
+import { DataContext } from "../DataProvider";
 
 const DrinkScreen = (props) => {
 
+    console.log('drinkscreen:', props);
+
+    const values = useContext(DataContext);
+    const addCarrito = values.addCarrito;
+    const carrito = values.carrito;
+    console.log('consoleId',carrito);
     const [price, setPrice] = useState(false)
     const [alpha, setAlpha] = useState(false)
     const { filterProducts, getDrinks, auxiliar, loading, drinks } = props;
@@ -75,7 +80,7 @@ const DrinkScreen = (props) => {
                             </View>
                             <Text style={{fontSize: 17, marginRight: '5%', fontWeight: '300'}}>{drink.drinkName}</Text>
                             <Text style={{marginRight: '5%', fontWeight: '400', fontSize: 17, marginTop: '2%'}}><Text style={{color: '#0d9488'}}>Precio</Text>:${drink.price}</Text>
-                            <TouchableOpacity style={{marginRight: '5%' , backgroundColor: '#c8102e', padding: '2.5%', marginTop: '2.5%', borderRadius: 3}}>
+                            <TouchableOpacity onPress={() => addCarrito(drink._id) } style={{marginRight: '5%' , backgroundColor: '#c8102e', padding: '2.5%', marginTop: '2.5%', borderRadius: 3}}>
                                 <Text style={{fontWeight: '300', color: 'white', fontSize: 16}}>Agregar al carrito</Text>
                             </TouchableOpacity>
                         </View>

@@ -1,4 +1,5 @@
-import React, { createContext, useState, useEffect, Alert } from "react";
+import React, { createContext, useState, useEffect } from "react";
+import { Alert } from 'react-native';
 import axios from "axios";
 export const DataContext = createContext();
 
@@ -23,7 +24,7 @@ const DataProvider = (props) => {
 	//   })
 
 	useEffect(() => {
-		axios.get('http://localhost:4000/api/drinks')
+		axios.get('https://backendparavalen.herokuapp.com/api/drinks')
 		.then(res => setProductos(res.data.drinks))
 		.catch(error => console.log(error))
 	}, [])
