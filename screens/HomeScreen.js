@@ -43,7 +43,7 @@ const HomeScreen = (props) => {
             <Text style={styles.titleStyle}>MÁS</Text>
             <Text style={styles.titleStyle}>PREMIADO</Text>
             <Text style={styles.titleStyle}>DEL MUNDO</Text>
-            <TouchableOpacity style={{padding: 15, backgroundColor: '#c8102e', borderRadius: '5%', marginTop: '5%'}}
+            <TouchableOpacity style={{padding: 15, backgroundColor: '#c8102e', borderRadius: 5, marginTop: '5%'}}
               onPress={() => props.navigation.navigate('Drinks')}
             >
               <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold', textTransform: 'uppercase'}}>Descubrí más</Text>
@@ -58,14 +58,14 @@ const HomeScreen = (props) => {
           <View style={{borderColor: '#c8102e', borderWidth: 3, padding: '2%', width: '90%', height: 450, marginLeft: '5%', marginBottom: '8%', paddingBottom: '10%'}}>
                 <CarouselRender />
           </View>
-          <View style={{backgroundColor: '#c8102e', width: '90%', height: 450, marginLeft: '5%', marginBottom: '8%', flex: 1, borderRadius: '3%'}}>
+          <View style={{backgroundColor: '#c8102e', width: '90%', height: 450, marginLeft: '5%', marginBottom: '8%', flex: 1, borderRadius: 3}}>
             <View style={{flex: 1, justifyContent: 'center'}}>
                 <Text style={{ color: 'white', fontSize: 25, fontWeight: 'bold', marginLeft: '4%', marginBottom: '2%', marginTop: '7%', textShadowColor: 'rgba(0, 0, 0, 0.75)',textShadowOffset: {width: 0, height: 0},textShadowRadius: 10}}>Hot Negroni</Text>
                 <Text style={{color: 'white', width: '90%', fontSize: 20, marginLeft: '4%', marginBottom: '6%', fontWeight: '600', textShadowColor: 'rgba(0, 0, 0, 0.40)',textShadowOffset: {width: 0, height: 0},textShadowRadius: 10}}>"EMPIEZA EL 2022 DISFRUTANDO DE UN BEEFEATER GIN HOT NEGRONI".</Text>
                 <Image source={FirstHomeImage} style={{width: '100%', height: '65%'}} />
             </View>
           </View>
-          <View style={{backgroundColor: '#c8102e', width: '90%', height: 450, marginLeft: '5%', borderRadius: '3%', marginBottom: '5%'}}>
+          <View style={{backgroundColor: '#c8102e', width: '90%', height: 450, marginLeft: '5%', borderRadius: 3, marginBottom: '5%'}}>
               <Image source={SecondHomeImage} style={{width: '100%', height: '65%'}} />
               <Text style={{color: 'white', fontSize: 25, fontWeight: 'bold', marginLeft: '5%', marginTop: '5%', textShadowColor: 'rgba(0, 0, 0, 0.75)',
               textShadowOffset: {width: 0, height: 0},
