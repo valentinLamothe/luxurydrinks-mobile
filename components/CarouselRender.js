@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import Carousel from 'react-native-snap-carousel'
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, ActivityIndicator } from 'react-native'
 import productAction from '../redux/actions/productAction';
 import { connect } from "react-redux";
 
@@ -36,7 +36,11 @@ const CarouselRender = (props) => {
     return (
 
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Carousel
+        {drinks.length === 0 
+            ?
+                <ActivityIndicator />
+            :
+            <Carousel
             data={drinks.slice(1, 5)}
             sliderWidth={900}
             itemWidth={450}
@@ -45,7 +49,7 @@ const CarouselRender = (props) => {
             loop={true}
             autoplay={true}
         />
-
+        }
     </View>
 
     );

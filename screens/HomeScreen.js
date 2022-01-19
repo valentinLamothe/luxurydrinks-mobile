@@ -20,7 +20,7 @@ import { AntDesign } from '@expo/vector-icons';
 
 const Drawer = createDrawerNavigator(); 
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = (props) => {
 
     return(
       <SafeAreaView style={{flex: 1, backgroundColor:'#fff'}}>
@@ -33,7 +33,7 @@ const HomeScreen = ({navigation}) => {
                 backgroundColor:'#c8102e'
                 }}>
                 <ImageBackground source={ImageLogo} style={{width: 140, height: 50, margin: '2%'}}/>
-                <TouchableOpacity style={{ borderRadius: 5, padding: 5, margin: '2%'}} onPress={() => navigation.openDrawer()}>
+                <TouchableOpacity style={{ borderRadius: 5, padding: 5, margin: '2%'}} onPress={() => props.navigation.openDrawer()}>
                 <Text style={{color: 'white', padding: 10, fontWeight: 'bold', fontSize: 20}}>MENU</Text>
                 </TouchableOpacity>
             </View>
@@ -44,7 +44,7 @@ const HomeScreen = ({navigation}) => {
             <Text style={styles.titleStyle}>PREMIADO</Text>
             <Text style={styles.titleStyle}>DEL MUNDO</Text>
             <TouchableOpacity style={{padding: 15, backgroundColor: '#c8102e', borderRadius: '5%', marginTop: '5%'}}
-              onPress={() => navigation.navigate('Drinks')}
+              onPress={() => props.navigation.navigate('Drinks')}
             >
               <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold', textTransform: 'uppercase'}}>Descubrí más</Text>
             </TouchableOpacity>

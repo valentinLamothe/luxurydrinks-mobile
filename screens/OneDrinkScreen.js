@@ -31,7 +31,7 @@ const OneDrinkScreen = (props) => {
                     />
                 <Text style={{fontWeight: 'bold', fontSize: 22, marginBottom: '2%'}}>{currentGin.drinkName}</Text>
                 <Text style={{fontSize: 20, marginBottom: '2%', fontWeight: '900'}}>$ {currentGin.price}</Text>
-                <Text style={{fontSize: 20, fontWeight: 'bold'}}>Stock: {currentGin.stock}</Text> 
+                <Text style={{fontSize: 20, fontWeight: 'bold'}}>Unidades: {currentGin.stock}</Text> 
                 </View>
             </ImageBackground>
         </SafeAreaView>

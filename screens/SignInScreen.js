@@ -30,7 +30,8 @@ const submitForm = () => {
   if(info) {
       showMessage({
           type: 'danger',
-          message: 'Hay campos incompletos, porfavor completar'
+          message: 'Hay campos incompletos, porfavor completar',
+          icon: 'danger'
       })
   } else {
     props.signIn(signUser)
@@ -39,12 +40,16 @@ const submitForm = () => {
           if(!response.data.success) {
               showMessage({
                type: 'danger',
-               message: 'Email o/y contraseña incorrecta'
+               message: 'Email o/y contraseña incorrecta',
+               icon: 'danger'
              })
           } else {
               showMessage({
                   type: 'success',
-                  message: `Bienvenido ${response.data.response.user.firstName}!`
+                  message: `Bienvenido ${response.data.response.user.firstName}!`,
+                  icon: 'success',
+                  backgroundColor: 'black',
+                  color: 'white'
               })
           }
       })
@@ -64,11 +69,11 @@ const submitForm = () => {
           <SafeAreaView>
             <ImageBackground source={backgroundUser} style={{width: '100%', height: '100%'}}>
               <View style={{flex: 1, justifyContent:"center", alignItems: 'center'}}>
-                <Text style={{fontSize: 30, fontWeight: '900', width: '80%'}}>Nombre: {props.user.firstName || props.user.newUser.firstName}</Text>
-                <Text style={{fontSize: 30, fontWeight: '900', width: '80%'}}>Email: {props.user.email || props.user.newUser.email}</Text>
-                <Text style={{fontSize: 30, fontWeight: '900', width: '80%', marginBottom: '5%'}}>Edad: {props.user.age || props.user.newUser.age}</Text>
-                <Image source={{uri: props.user.userImg || props.user.newUser.userImg}} style={{width: 200, height: 300, borderRadius: 100}} />
-          <TouchableOpacity onPress={() => props.navigation.navigate('Home')} style={{backgroundColor:'#c8102e', padding: '5%', borderRadius: 5, marginTop: '10%'}}>
+                <Text style={{fontSize: 30, fontWeight: '900', width: '80%'}}>Nombre: <Text style={{color: '#c8102e'}}>{props.user.firstName || props.user.newUser.firstName}</Text></Text>
+                <Text style={{fontSize: 30, fontWeight: '900', width: '80%'}}>Email: <Text style={{color: '#c8102e'}}>{props.user.email || props.user.newUser.email}</Text></Text>
+                <Text style={{fontSize: 30, fontWeight: '900', width: '80%', marginBottom: '5%'}}>Edad: <Text style={{color: '#c8102e'}}>{props.user.age || props.user.newUser.age}</Text></Text>
+                <Image source={{uri: props.user.userImg || props.user.newUser.userImg}} style={{width: '70%', height: '43%', borderRadius: 200, borderWidth: 3}} />
+          <TouchableOpacity onPress={() => props.navigation.navigate('Inicio')} style={{backgroundColor:'#c8102e', padding: '5%', borderRadius: 5, marginTop: '10%'}}>
             <Text style={{color: 'white', fontSize: 20, fontWeight: '900'}}>Volver al sitio</Text>
           </TouchableOpacity>
           </View>
@@ -79,7 +84,7 @@ const submitForm = () => {
            <ImageBackground source={MarmolBackground} resizeMode="cover" style={{ width: '100%', height: '100%' }}>
             <View style={{flex: 1, justifyContent:"center", alignItems: 'center'}}>
                 <View style={{flex: 1, justifyContent:"center", alignItems: 'center'}}>
-                    <Text style={{ fontWeight: 'bold', fontSize: 26, padding: 10, textAlign: 'center' }}>Ingresar</Text>
+                    <Text style={{ fontWeight: 'bold', fontSize: 26, padding: 10, textAlign: 'center' }}>Bienvenido</Text>
                     <TextInput  style={styles.inputStyle} onChangeText={e => {inputHandler(e, 'email')}}  placeholder="E-mail" />
                     <TextInput  style={styles.inputStyle} onChangeText={e => {inputHandler(e, 'password')}}  secureTextEntry={true}  placeholder="Contraseña" />
                     <TouchableOpacity style={{ backgroundColor: '#c8102e', width:'30%', padding: '2%', borderRadius: '3%'}} name="signup_submit" onPress={() => submitForm()} value="Sign me up">

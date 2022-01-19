@@ -29,7 +29,8 @@ const SignUpScreen = (props) => {
     if(info) {
       showMessage({
         message: 'Hay campos incompletos, porfavor completar',
-        type: 'danger'
+        type: 'danger',
+        icon: 'danger'
       })
     } else {
       props.signUp(newUser)
@@ -37,18 +38,23 @@ const SignUpScreen = (props) => {
         if(response.data.success) {
           showMessage({
             message: `Gracias por registrarte ${response.data.response.newUser.firstName}`,
-            type: 'success'
+            type: 'success',
+            icon: 'success',
+            backgroundColor: 'black',
+            color: 'white'
           })
         } else if(response.data.error) {
             showMessage({
               type: 'danger',
-              message: `${response.data.error}`
+              message: `${response.data.error}`,
+              icon: 'danger'
             })
         } else {
           response.data.errors.map(error => {
             showMessage({
               type: 'danger',
-              message: error.message
+              message: error.message,
+              icon: 'danger'
             })
           })
         }
@@ -57,7 +63,8 @@ const SignUpScreen = (props) => {
         console.log(error)
         showMessage({
           message: 'Estamos con problemas tecnicos! Porfavor vuelve mas tarde!',
-          type: 'danger'
+          type: 'danger',
+          icon: 'danger'
         })
       })
     }

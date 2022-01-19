@@ -18,7 +18,7 @@ export default function App() {
       <NavigationContainer>
           <StackNavigation />
       </NavigationContainer>
-      <FlashMessage position="top" /> 
+      <FlashMessage position="top"  /> 
     </Provider>
   );
 }
