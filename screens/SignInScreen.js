@@ -9,14 +9,7 @@ import backgroundUser from '../assets/fondoLadrillo.jpg'
 
 const SignInScreen = (props) => {
 
-  if(props.user !== null) {
-    <View>Bienvenido {props.user.role}</View>
-  } else {
-    
-  }
-
-
-console.log('userProps:', props.user);
+console.log('userPropscuandomeregistro:', props);
 
 
 const [signUser, setSignUser] = useState ({
@@ -42,6 +35,7 @@ const submitForm = () => {
   } else {
     props.signIn(signUser)
       .then(response => {
+        console.log('ernestSchuber:', response);
           if(!response.data.success) {
               showMessage({
                type: 'danger',
@@ -50,7 +44,7 @@ const submitForm = () => {
           } else {
               showMessage({
                   type: 'success',
-                  message: `Bienvenido ${response.data.response.firstName}!`
+                  message: `Bienvenido ${response.data.response.user.firstName}!`
               })
           }
       })
@@ -70,9 +64,10 @@ const submitForm = () => {
           <SafeAreaView>
             <ImageBackground source={backgroundUser} style={{width: '100%', height: '100%'}}>
               <View style={{flex: 1, justifyContent:"center", alignItems: 'center'}}>
-                <Text style={{fontSize: 30, marginBottom: '5%', fontWeight: '900'}}>Bienvenido: {props.user.firstName}</Text>
-                <Text>Email: {props.user.email}</Text>
-                <Image source={{uri: props.user.userImg}} style={{width: 200, height: 300, borderRadius: 100}} />
+                <Text style={{fontSize: 30, fontWeight: '900', width: '80%'}}>Nombre: {props.user.firstName || props.user.newUser.firstName}</Text>
+                <Text style={{fontSize: 30, fontWeight: '900', width: '80%'}}>Email: {props.user.email || props.user.newUser.email}</Text>
+                <Text style={{fontSize: 30, fontWeight: '900', width: '80%', marginBottom: '5%'}}>Edad: {props.user.age || props.user.newUser.age}</Text>
+                <Image source={{uri: props.user.userImg || props.user.newUser.userImg}} style={{width: 200, height: 300, borderRadius: 100}} />
           <TouchableOpacity onPress={() => props.navigation.navigate('Home')} style={{backgroundColor:'#c8102e', padding: '5%', borderRadius: 5, marginTop: '10%'}}>
             <Text style={{color: 'white', fontSize: 20, fontWeight: '900'}}>Volver al sitio</Text>
           </TouchableOpacity>
@@ -118,7 +113,6 @@ const styles = StyleSheet.create({
 const mapStateToProps = state => {
   return {
       user: state.authReducers.user,
-      userImage: state.authReducers.img
   }
 }
 

@@ -6,12 +6,12 @@ const authReducers = (
         role: null,
         users: [],
     }, action) => {
+        console.log('action.payload:',action);
     if (action.type === 'LOG_USER') {
         // localStorage.setItem('token', action.payload.token);
         return {
             ...state,
-            user: action.payload,
-            token: action.payload.token,
+            user: action.payload
         }
 
     } else if (action.type === 'LOG_OUT') {
