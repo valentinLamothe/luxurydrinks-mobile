@@ -16,12 +16,12 @@ const CarritoScreen = () => {
         if (res > 5) {
             return res;
         } else if (res <= 5 && res > 0) {
-            return <Text> " "</Text> + res + <Text>" Ultimas unidades!!"</Text>;
+            return " " + res + " Ultimas unidades!!";
         } else {
-            return <Text>" Sin stock"</Text>;
+            return " Sin stock";
         }
     };
-
+    console.log(carrito);
     const reduce = (id) => {
         carrito.forEach((item) => {
             if (item._id === id) {
@@ -40,66 +40,51 @@ const CarritoScreen = () => {
     };
 
     const removeProducto = (id) => {
-        Alert.alert(
-            "El producto sera sacado del carrito!"
-        ).then((result) => {
-            if (result.isConfirmed) {
-                Alert.alert(
-                    "El producto ha sido borrado del carrito",
-                );
-                carrito.forEach((item, index) => {
-                    if (item._id === id) {
-                        item.quantity = 1;
-                        carrito.splice(index, 1);
-                    }
-                });
-                setCarrito([...carrito]);
-            }
-        });
+        if (Alert.alert("El producto sera sacado del carrito!")) {
+            carrito.forEach((item, index) => {
+                if (item._id === id) {
+                    item.quantity = 1;
+                    carrito.splice(index, 1);
+                }
+            });
+            setCarrito([...carrito]);
+        }
     };
 
     const vaciarCarrito = () => {
-        Alert.alert(
-            "Desea vaciar el carrito?"
-            //title: "Desea vaciar el carrito?",
-            //   text: "Todos los productos seran borrados del carrito!",
-            //   icon: "warning",
-            //   showCancelButton: true,
-            //   confirmButtonColor: "#d33",
-            //   cancelButtonColor: "#d33",
-            //   confirmButtonText: "Vaciar carrito!",
-        ).then((result) => {
-            if (result.isConfirmed) {
-                Alert.alert(
-                    "Los productos han sido borrados del carrito",
-                );
-
+            if(Alert.alert("Desea vaciar el carrito?")) {
                 carrito.splice(0, carrito.length);
                 setCarrito([...carrito]);
             }
-        });
     };
 
 
     return (
         <SafeAreaView>
-            <View>
                 <ImageBackground
                     source={MarmolBackground}
                     style={{ width: '100%', height: '100%' }}
                 >
-                    <Text>Carrito de compras</Text>
+                    <Text>
+                        Carrito de compras
+                    </Text>
                     <View>
                         {carrito.length === 0 ? (
-                            <Text>Carrito Vacio</Text>
+                            <Text>
+                                Carrito Vacio
+                            </Text>
                         ) : (
-                            <>
-                                {carrito.map((producto) => (
-                                    <>
-                                        <Image source={{ uri: producto.drinkImg }} alt={producto.drinkName} />
+                            <View>
+                                {carrito.map((producto, index) => (
+                                    <View key={index}>
+                                        <Image source={{ uri: producto.drinkImg }} />
                                         <View>
-                                            <Text> {producto.type + " " + producto.drinkName} </Text>
-                                            <Text>${producto.price}</Text>
+                                            <Text>
+                                                {producto.drinkName} 
+                                            </Text>
+                                            <Text>
+                                                ${producto.price}
+                                            </Text>
                                             <Text>
                                                 Stock:
                                                 {stockActualizado(producto)}
@@ -107,20 +92,26 @@ const CarritoScreen = () => {
                                         </View>
                                         <View>
                                             <TouchableOpacity onPress={() => increase(producto._id)}>
-                                                <Text> <AntDesign name="arrowup" size={24} color="black" /></Text>
+                                                <Text> 
+                                                    <AntDesign name="arrowup" size={24} color="black" />
+                                                </Text>
                                             </TouchableOpacity>
                                             <Text>{producto.quantity}</Text>
                                             <TouchableOpacity onPress={() => reduce(producto._id)}>
-                                                <Text><AntDesign name="arrowdown" size={24} color="black" /></Text>
+                                                <Text>
+                                                    <AntDesign name="arrowdown" size={24} color="black" />
+                                                </Text>
                                             </TouchableOpacity>
                                         </View>
                                         <TouchableOpacity onPress={() => removeProducto(producto._id)}>
-                                            <Text><Entypo name="trash" size={24} color="black" /></Text>
+                                            <Text>
+                                                <Entypo name="trash" size={24} color="black" />
+                                            </Text>
                                         </TouchableOpacity>
-                                    </>
+                                    </View>
                                 ))}
                                 ;
-                            </>
+                            </View>
                         )}
                     </View>
 
@@ -130,18 +121,18 @@ const CarritoScreen = () => {
                             <View
                                 style={{ height: 130 }}
                             >
+                                <Text>Hola</Text>
                             </View>
                             <TouchableOpacity                                                                       
                                 onPress={() => vaciarCarrito()}
                             >
                                 <View>
-                                    <Text>Vaciar <Entypo name="trash" size={24} color="black" /></Text>
+                                    <Text><Entypo name="trash" size={24} color="black" /> Vaciar</Text>
                                 </View>
                             </TouchableOpacity>
                         </View>
                     </View>
                 </ImageBackground>
-            </View>
         </SafeAreaView>
     )
 }

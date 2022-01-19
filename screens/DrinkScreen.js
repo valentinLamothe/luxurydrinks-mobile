@@ -9,12 +9,10 @@ import { DataContext } from "../DataProvider";
 
 const DrinkScreen = (props) => {
 
-    console.log('drinkscreen:', props);
 
     const values = useContext(DataContext);
     const addCarrito = values.addCarrito;
     const carrito = values.carrito;
-    console.log('consoleId',carrito);
     const [price, setPrice] = useState(false)
     const [alpha, setAlpha] = useState(false)
     const { filterProducts, getDrinks, auxiliar, loading, drinks } = props;
@@ -54,7 +52,9 @@ const DrinkScreen = (props) => {
                  <Text style={{fontWeight: 'bold', marginRight: '1%'}}>{alpha ? "AZ": "ZA"}</Text>
              </TouchableOpacity>
              </View>
-             
+             <View>
+                 <Text style={{flex: 1, fontSize: 20, fontWeight: 'bold'}}>{carrito.length}</Text>
+             </View>
              <View>
                 {auxiliar.length > 0 ?
                     auxiliar.map(drink => {

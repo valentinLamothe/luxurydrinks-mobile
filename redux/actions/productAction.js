@@ -19,16 +19,10 @@ const productActions = {
     deleteProduct: (productId) => {
         return async (dispatch, getState) => {
             try {
-                // const token = localStorage.getItem('token')
                 const res = await axios.delete(`https://backendparavalen.herokuapp.com/api/drinks/admin/drink/${productId}`, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
                 dispatch({ type: 'DELETE_PRODUCT', payload: res.data.deletedId })
-
-                // if(res.data.msg) {
-                //     Swal.fire({title: 'Borrado de la BD!', position: 'center', background: 'black', color: 'white', toast: true})
-                // }
-
                 return res.data.users
             } catch (error) {
                 return { msg: 'You must be login' }

@@ -27,14 +27,14 @@ const HomeScreen = (props) => {
       <ImageBackground source={BackgroundImage} style={{width: "100%", height: "100%"}} >
         <ScrollView>
             <View style={{
-                flexDirection:'row', 
-                justifyContent: 'space-between', 
-                alignItems: 'center',
-                backgroundColor:'#c8102e'
+                  flexDirection:'row', 
+                  justifyContent: 'space-between', 
+                  alignItems: 'center',
+                  backgroundColor:'#c8102e'
                 }}>
                 <ImageBackground source={ImageLogo} style={{width: 140, height: 50, margin: '2%'}}/>
                 <TouchableOpacity style={{ borderRadius: 5, padding: 5, margin: '2%'}} onPress={() => props.navigation.openDrawer()}>
-                <Text style={{color: 'white', padding: 10, fontWeight: 'bold', fontSize: 20}}>MENU</Text>
+                  <Text style={{color: 'white', padding: 10, fontWeight: 'bold', fontSize: 20}}>MENU</Text>
                 </TouchableOpacity>
             </View>
           <ImageBackground source={ImageDrink} style={{width: '100%', height: 400}}>
