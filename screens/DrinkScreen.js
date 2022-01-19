@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, SafeAreaView, Image, ImageBackground, TextInput, TouchableOpacity, ScrollView, ActivityIndicator } from 'react-native';
 import { connect } from "react-redux";
 import productAction from '../redux/actions/productAction';
-import LadrilloBackground from '../assets/fondoLadrillo.jpg'
+import marmolBackground from '../assets/fondoMarmol.jpg'
 import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 
@@ -29,7 +29,7 @@ const DrinkScreen = (props) => {
 
     return (
         <SafeAreaView>
-            <ImageBackground source={LadrilloBackground} style={{ width: "100%", height: "100%" }} >
+            <ImageBackground source={marmolBackground} style={{ width: "100%", height: "100%" }} >
                 <ScrollView>
                     {drinks.length === 0 ? 
                     <ActivityIndicator />
@@ -42,10 +42,10 @@ const DrinkScreen = (props) => {
                      onChange={(e) => filterProducts("search",drinks, e.nativeEvent.text)}
                      placeholderTextColor={'black'}
                  />
-             <TouchableOpacity style={{backgroundColor: '#ca8a04', padding: '1.5%', borderRadius: '3%'}} onPress={() => handlePrice()}>
+             <TouchableOpacity style={{backgroundColor: '#ca8a04', padding: '1.5%', boderRadius: 3}} onPress={() => handlePrice()}>
                  <Text style={{fontWeight: 'bold'}}>Precio{price ? <Entypo name="arrow-up" size={21} color="black" />: <Entypo name="arrow-down" size={18} color="black" />}</Text>
              </TouchableOpacity>
-             <TouchableOpacity style={{backgroundColor: '#ca8a04', padding: '2%', borderRadius: '3%'}} onPress={() => handleAlpha()}>
+             <TouchableOpacity style={{backgroundColor: '#ca8a04', padding: '2%', boderRadius: 3}} onPress={() => handleAlpha()}>
                  <Text style={{fontWeight: 'bold', marginRight: '1%'}}>{alpha ? "AZ": "ZA"}</Text>
              </TouchableOpacity>
              </View>
@@ -53,7 +53,20 @@ const DrinkScreen = (props) => {
              <View>
                 {auxiliar.length > 0 ?
                     auxiliar.map(drink => {
-                        return <View key={drink._id} style={{ justifyContent: 'center', alignItems: 'center', margin: '7%' }}>
+                        return <View 
+                                key={drink._id} 
+                                style={{ 
+                                    justifyContent: 'center', 
+                                    alignItems: 'center', 
+                                    margin: '7%', 
+                                    backgroundColor: '#ffffff76',
+                                    shadowColor: '#171717',
+                                    shadowOffset: {width: -2, height: 4},
+                                    shadowOpacity: 0.2,
+                                    shadowRadius: 3, 
+                                    borderRadius: 6, 
+                                    padding: 15 
+                            }}>
                             <View style={{ flexDirection: 'row'}}>
                             <Image source={{uri: drink.drinkImg}} style={{ width: 230, height: 300, marginBottom: '3%' }} />
                             <TouchableOpacity onPress={() => props.navigation.navigate('OneDrink', {params: drink._id})}>

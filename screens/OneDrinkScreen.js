@@ -2,7 +2,7 @@ import { View, Text, SafeAreaView, Image, ImageBackground } from 'react-native'
 import { useEffect, useState } from 'react';
 import productAction from '../redux/actions/productAction';
 import { connect } from "react-redux";
-import LadrilloBackground from '../assets/fondoLadrillo.jpg'
+import marmolBackground from '../assets/fondoMarmol.jpg'
 
 
 
@@ -20,7 +20,7 @@ const OneDrinkScreen = (props) => {
 
     return (
         <SafeAreaView>
-            <ImageBackground source={LadrilloBackground} style={{height: '100%', width: '100%'}}>
+            <ImageBackground source={marmolBackground} style={{height: '100%', width: '100%'}}>
                 <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                     <Text style={{fontSize: 30, fontWeight: '900', marginBottom: '15%', color: '#c8102e'}}>Detalle de la bebida</Text>
                     <Image source={{uri: currentGin.drinkImg}} 
