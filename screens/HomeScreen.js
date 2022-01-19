@@ -87,7 +87,7 @@ const HomeNavigate = (props) => {
             drawerActiveTintColor: '#c8102e',
             drawerLabelStyle: {marginLeft: -20, fontWeight: 'bold'}}
         }>
-        <Drawer.Screen name="Home" component={HomeScreen} options={{
+        <Drawer.Screen name="Inicio" component={HomeScreen} options={{
           headerShown: false,
           drawerIcon: () => {
             return <Entypo name="home" size={24} color="black" />
