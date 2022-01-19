@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, Alert } from "react";
 import axios from "axios";
 export const DataContext = createContext();
 
@@ -8,19 +8,19 @@ const DataProvider = (props) => {
 	const [carrito, setCarrito] =useState([])
 	const [total, setTotal] = useState(0)
 
-	const Alert = Swal.mixin({
-		toast: true,
-		position: 'top-end',
-		showConfirmButton: false,
-		timer: 3000,
-		background: 'black',
-		color: 'white',
-		timerProgressBar: true,
-		didOpen: toast => {
-			toast.addEventListener('mouseenter', Swal.stopTimer)
-			toast.addEventListener('mouseleave', Swal.resumeTimer)
-		}
-	  })
+	// const Alert = Swal.mixin({
+	// 	toast: true,
+	// 	position: 'top-end',
+	// 	showConfirmButton: false,
+	// 	timer: 3000,
+	// 	background: 'black',
+	// 	color: 'white',
+	// 	timerProgressBar: true,
+	// 	didOpen: toast => {
+	// 		toast.addEventListener('mouseenter', Swal.stopTimer)
+	// 		toast.addEventListener('mouseleave', Swal.resumeTimer)
+	// 	}
+	//   })
 
 	useEffect(() => {
 		axios.get('http://localhost:4000/api/drinks')
@@ -38,28 +38,26 @@ const DataProvider = (props) => {
 				return producto._id === id
 			})
 			setCarrito([...carrito, ...data])
-			Alert.fire({
-				icon: 'success',
-				title: 'El producto ha sido añadido'
-			  })
+			Alert.alert(
+				 'El producto ha sido añadido'
+			  )
 		}else{
-			Alert.fire({
-				icon: 'warning',
-				title: 'El producto ya ha sido añadido'
-			  })
+			Alert.alert(
+				 'El producto ya ha sido añadido'
+			  )
 			// Alert("")
 		}
 	}
-	useEffect(() =>{
-		const dataCarrito = JSON.parse(localStorage.getItem('dataCarrito'))
-		if(dataCarrito){
-			setCarrito(dataCarrito)
-		}
-	},[])
+	// useEffect(() =>{
+	// 	const dataCarrito = JSON.parse(localStorage.getItem('dataCarrito'))
+	// 	if(dataCarrito){
+	// 		setCarrito(dataCarrito)
+	// 	}
+	// },[])
 
-	useEffect(() =>{
-		localStorage.setItem('dataCarrito', JSON.stringify(carrito))
-	},[carrito])
+	// useEffect(() =>{
+	// 	localStorage.setItem('dataCarrito', JSON.stringify(carrito))
+	// },[carrito])
 
 	useEffect(() =>{
 		const getTotal = () =>{
