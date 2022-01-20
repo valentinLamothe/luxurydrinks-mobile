@@ -67,7 +67,7 @@ const submitForm = () => {
         {props.user !== null
           ?
           <SafeAreaView>
-            <ImageBackground source={backgroundUser} style={{width: '100%', height: '100%'}}>
+            <ImageBackground source={MarmolBackground} style={{width: '100%', height: '100%'}}>
               <View style={{flex: 1, justifyContent:"center", alignItems: 'center'}}>
                 <Text style={{fontSize: 30, fontWeight: '900', width: '80%'}}>Nombre: <Text style={{color: '#c8102e'}}>{props.user.firstName || props.user.newUser.firstName}</Text></Text>
                 <Text style={{fontSize: 30, fontWeight: '900', width: '80%'}}>Email: <Text style={{color: '#c8102e'}}>{props.user.email || props.user.newUser.email}</Text></Text>
@@ -82,8 +82,8 @@ const submitForm = () => {
           :
           <>
            <ImageBackground source={MarmolBackground} resizeMode="cover" style={{ width: '100%', height: '100%' }}>
-            <View style={{flex: 1, justifyContent:"center", alignItems: 'center'}}>
-                <View style={{flex: 1, justifyContent:"center", alignItems: 'center'}}>
+            <View style={{flex: 1, justifyContent:"center", alignItems: 'center'  }}>
+                <View style={{flex: 1, justifyContent:"center", alignItems: 'center' ,shadowColor: '#171717',shadowOffset: {width: -2, height: 4},shadowOpacity: 0.2,shadowRadius: 3,backgroundColor: '#ffffff76' }}>
                     <Text style={{ fontWeight: 'bold', fontSize: 26, padding: 10, textAlign: 'center' }}>Bienvenido</Text>
                     <TextInput  style={styles.inputStyle} onChangeText={e => {inputHandler(e, 'email')}}  placeholder="E-mail" />
                     <TextInput  style={styles.inputStyle} onChangeText={e => {inputHandler(e, 'password')}}  secureTextEntry={true}  placeholder="Contraseña" />

@@ -35,7 +35,9 @@ const DrinkScreen = (props) => {
             <ImageBackground source={marmolBackground} style={{ width: "100%", height: "100%" }} >
                 <ScrollView>
                     {drinks.length === 0 ? 
+                    <View style={{flex: "1", alignItems: "center", justifyContent: "center"}}>
                     <ActivityIndicator />
+                    </View>
                  :
                  <>
                  <View style={{flex: 1, justifyContent: "space-around", alignItems: "center", flexDirection: "row", marginTop: '5%'}} >
@@ -52,9 +54,7 @@ const DrinkScreen = (props) => {
                  <Text style={{fontWeight: 'bold', marginRight: '1%'}}>{alpha ? "AZ": "ZA"}</Text>
              </TouchableOpacity>
              </View>
-             <View>
-                 <Text style={{flex: 1, fontSize: 20, fontWeight: 'bold'}}>{carrito.length}</Text>
-             </View>
+
              <View>
                 {auxiliar.length > 0 ?
                     auxiliar.map(drink => {

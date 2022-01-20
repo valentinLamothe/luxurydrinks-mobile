@@ -99,23 +99,23 @@ const HomeNavigate = (props) => {
             return <Entypo name="drink" size={24} color="black" />
           }
         }} />
-        {/* { props.user !== null ? */}
-          {/* <> */}
+        { props.user !== null ? 
+           <> 
             <Drawer.Screen name="Carrito" component={CarritoScreen} options={{
                 headerShown: false, 
                 drawerIcon: () => {
                   return <AntDesign name="shoppingcart" size={24} color="black" />
                 }
               }} />
-          {/* </>  */}
-          {/* : */}
+           </>  
+           : 
         <Drawer.Screen name="Registrarse" component={SignUpScreen} options={{
           headerShown: false, 
           drawerIcon: () => {
             return <Feather name="user-plus" size={24} color="black" />
           }
         }} />
-      {/* // } */}
+         }
         {props.user !== null ? 
               <Drawer.Screen name="Perfil" component={SignInScreen} options={{
                 headerShown: false, 

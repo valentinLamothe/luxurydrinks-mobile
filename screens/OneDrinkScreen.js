@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, Image, ImageBackground } from 'react-native'
+import { View, Text, SafeAreaView, Image, ImageBackground, TouchableOpacity } from 'react-native'
 import { useEffect, useState } from 'react';
 import productAction from '../redux/actions/productAction';
 import { connect } from "react-redux";
@@ -32,6 +32,9 @@ const OneDrinkScreen = (props) => {
                 <Text style={{fontWeight: 'bold', fontSize: 22, marginBottom: '2%'}}>{currentGin.drinkName}</Text>
                 <Text style={{fontSize: 20, marginBottom: '2%', fontWeight: '900'}}>$ {currentGin.price}</Text>
                 <Text style={{fontSize: 20, fontWeight: 'bold'}}>Unidades: {currentGin.stock}</Text> 
+                <TouchableOpacity onPress={() => props.navigation.navigate('Inicio')} style={{backgroundColor:'#c8102e', padding: '5%', borderRadius: 5, marginTop: '14%'}}>
+                  <Text style={{color: 'white', fontSize: 20, fontWeight: '900'}}>Volver al sitio</Text>
+                </TouchableOpacity>
                 </View>
             </ImageBackground>
         </SafeAreaView>

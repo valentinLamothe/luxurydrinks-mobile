@@ -4,6 +4,8 @@ import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawe
 import { AntDesign } from '@expo/vector-icons';
 import { connect } from "react-redux";
 import userActions from '../redux/actions/authActions';
+import { showMessage, hideMessage } from "react-native-flash-message"
+
 
 const CustomDrawer = props => {
 
@@ -16,7 +18,7 @@ const CustomDrawer = props => {
             </DrawerContentScrollView>
             {props.user !== null 
             ?  
-             <TouchableOpacity onPress={() => props.logOut()}>
+             <TouchableOpacity onPress={() => props.logOut() ? showMessage({message: 'Cerraste Sesion, hasta pronto!', icon: 'success', backgroundColor: "black", color: 'white'}) : ''}>
                 <View style={{ padding: 20, borderTopWidth: 1, borderTopColor: '#ccc' }}>
                     <View style={{flexDirection: 'row', alignItems: 'center'}}>
                     <AntDesign name="man" size={24} color="black" />

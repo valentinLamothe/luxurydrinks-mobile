@@ -9,6 +9,19 @@ const DataProvider = (props) => {
 	const [carrito, setCarrito] =useState([])
 	const [total, setTotal] = useState(0)
 
+	// const Alert = Swal.mixin({
+	// 	toast: true,
+	// 	position: 'top-end',
+	// 	showConfirmButton: false,
+	// 	timer: 3000,
+	// 	background: 'black',
+	// 	color: 'white',
+	// 	timerProgressBar: true,
+	// 	didOpen: toast => {
+	// 		toast.addEventListener('mouseenter', Swal.stopTimer)
+	// 		toast.addEventListener('mouseleave', Swal.resumeTimer)
+	// 	}
+	//   })
 
 	useEffect(() => {
 		axios.get('https://backendparavalen.herokuapp.com/api/drinks')

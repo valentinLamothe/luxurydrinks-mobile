@@ -77,8 +77,8 @@ const SignUpScreen = (props) => {
                 <ImageBackground source={marmolBackground} resizeMode="cover" style={{ width: '100%', height: '100%' }}>
                     <View style={{flex: 1, justifyContent:"center", alignItems: 'center'}}>
                             <View>
-                                <View style={{ backgroundColor: 'white', paddingLeft: '14%', paddingRight: '14%', borderRadius: 8}}>
-                                    <Text style={{ fontWeight: 'bold', fontSize: 26, padding: 10, textAlign: 'center', marginBottom: '5%'}}>Registrarse</Text>
+                                <View style={{ shadowColor: '#171717',shadowOffset: {width: -2, height: 4},shadowOpacity: 0.2,shadowRadius: 3,backgroundColor: '#ffffff76', paddingLeft: '14%', paddingRight: '14%', borderRadius: 8}}>
+                                    <Text style={{ fontWeight: 'bold', fontSize: 26, padding: 10, textAlign: 'center', marginBottom: '5%', paddingTop: 40}}>Registrarse</Text>
                                     <TextInput style={{fontSize: 19, padding: 10, fontWeight: 'bold', borderWidth: 1, marginBottom: '4%', borderRadius: 3}} type="text" onChangeText={e => {inputHandler(e, 'firstName')}} placeholder="Nombre" />
                                     <TextInput style={{fontSize: 19, padding: 10, fontWeight: 'bold', borderWidth: 1, marginBottom: '4%', borderRadius: 3}} type="text" onChangeText={e => {inputHandler(e, 'lastName')}} name="apellido" placeholder="Apellido" />
                                     <TextInput style={{fontSize: 19, padding: 10, fontWeight: 'bold', borderWidth: 1, marginBottom: '4%', borderRadius: 3}} type="number" onChangeText={e => {inputHandler(e, 'age')}} name="age" placeholder="Edad" />
