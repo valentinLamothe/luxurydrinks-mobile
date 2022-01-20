@@ -22,12 +22,12 @@ const OneDrinkScreen = (props) => {
         <SafeAreaView>
             <ImageBackground source={marmolBackground} style={{height: '100%', width: '100%'}}>
                 <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                    <Text style={{fontSize: 30, fontWeight: '900', marginBottom: '15%', color: '#c8102e'}}>Detalle de la bebida</Text>
+                    <Text style={{fontSize: 30, fontWeight: '900', marginBottom: '5%', marginTop: '3%', color: '#c8102e'}}>Detalle de la bebida</Text>
                     <Image source={{uri: currentGin.drinkImg}} 
                     style={{
                         width: 350,
                         height: 350,
-                        marginBottom: '5%' }} 
+                        marginBottom: '3%' }} 
                     />
                 <Text style={{fontWeight: 'bold', fontSize: 22, marginBottom: '2%'}}>{currentGin.drinkName}</Text>
                 <Text style={{fontSize: 20, marginBottom: '2%', fontWeight: '900'}}>$ {currentGin.price}</Text>

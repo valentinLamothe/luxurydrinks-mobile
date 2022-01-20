@@ -6,7 +6,7 @@ import Drinks from './DrinkScreen';
 import CustomDrawer from '../components/CustomDrawer';
 import { Entypo } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
-import BackgroundImage from '../assets/fondoLadrillo.jpg';
+import BackgroundImage from '../assets/fondoMarmol.jpg';
 import ImageLogo from '../assets/logoluxury.png';
 import ImageDrink from '../assets/Home.jpeg'
 import CarouselRender from '../components/CarouselRender';

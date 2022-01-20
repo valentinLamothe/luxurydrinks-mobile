@@ -84,7 +84,7 @@ const submitForm = () => {
            <ImageBackground source={MarmolBackground} resizeMode="cover" style={{ width: '100%', height: '100%' }}>
             <View style={{flex: 1, justifyContent:"center", alignItems: 'center'  }}>
                 <View style={{flex: 1, justifyContent:"center", alignItems: 'center' }}>
-                  <View style={{shadowColor: '#171717',shadowOffset: {width: -2, height: 4},shadowOpacity: 0.2,shadowRadius: 3,backgroundColor: '#ffffff76', justifyContent: 'center', alignItems: 'center', padding: '10%', borderRadius: '10'}}>
+                  <View style={{shadowColor: '#171717',shadowOffset: {width: -2, height: 4},shadowOpacity: 0.2,shadowRadius: 3,backgroundColor: '#ffffff76', justifyContent: 'center', alignItems: 'center', padding: '10%', borderRadius: 10}}>
                     <Text style={{ fontWeight: 'bold', fontSize: 26, padding: 10, textAlign: 'center' }}>Bienvenido</Text>
                     <TextInput  style={styles.inputStyle} onChangeText={e => {inputHandler(e, 'email')}}  placeholder="E-mail" />
                     <TextInput  style={styles.inputStyle} onChangeText={e => {inputHandler(e, 'password')}}  secureTextEntry={true}  placeholder="Contraseña" />
