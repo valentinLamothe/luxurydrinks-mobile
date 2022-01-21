@@ -4,7 +4,7 @@ const productActions = {
 
     fetchProducts: () => {
         return async(dispatch, getState) => {
-            const res = await axios.get("https://backendparavalen.herokuapp.com/api/drinks")
+            const res = await axios.get("https://luxurydrinks.herokuapp.com/api/drinks")
             if(res.data.success){
                 dispatch({type:'GET_PRODUCTS',payload:res.data})
             }else{
@@ -19,7 +19,7 @@ const productActions = {
     deleteProduct: (productId) => {
         return async (dispatch, getState) => {
             try {
-                const res = await axios.delete(`https://backendparavalen.herokuapp.com/api/drinks/admin/drink/${productId}`, {
+                const res = await axios.delete(`https://luxurydrinks.herokuapp.com/api/drinks/admin/drink/${productId}`, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
                 dispatch({ type: 'DELETE_PRODUCT', payload: res.data.deletedId })

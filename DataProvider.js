@@ -24,7 +24,7 @@ const DataProvider = (props) => {
 	//   })
 
 	useEffect(() => {
-		axios.get('https://backendparavalen.herokuapp.com/api/drinks')
+		axios.get('https://luxurydrinks.herokuapp.com/api/drinks')
 		.then(res => setProductos(res.data.drinks))
 		.catch(error => console.log(error))
 	}, [])

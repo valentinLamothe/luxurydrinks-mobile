@@ -3,7 +3,7 @@ import axios from 'axios';
 const authActions = {
     signUpUser: (newUser) => {
         return async (dispatch, getState) => {
-            const res = await axios.post('https://backendparavalen.herokuapp.com/api/user/signup', newUser)
+            const res = await axios.post('https://luxurydrinks.herokuapp.com/api/user/signup', newUser)
             if (res.data.success && !res.data.error) {
                 dispatch({ type: 'LOG_USER', payload: res.data.response });
                 return res
@@ -14,9 +14,9 @@ const authActions = {
     },
     signInUser: (logUser) => {
         return async (dispatch, getState) => {
-            const res = await axios.post('https://backendparavalen.herokuapp.com/api/user/login', { ...logUser })
+            const res = await axios.post('https://luxurydrinks.herokuapp.com/api/user/login', { ...logUser })
             if (res.data.success && !res.data.error) {
-                dispatch({ type: 'LOG_USER', payload: res.data.response.user })
+                dispatch({ type: 'LOG_USER', payload: res.data.response })
                 return res
             } else {
                 return res
@@ -31,7 +31,7 @@ const authActions = {
     authUser: (token) => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.get('https://backendparavalen.herokuapp.com/api/user/auth', {
+                const response = await axios.get('https://luxurydrinks.herokuapp.com/api/user/auth', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     }
@@ -49,7 +49,7 @@ const authActions = {
         return async (dispatch, getState) => {
             try {
                 const token = localStorage.getItem('token')
-                const res = await axios.get('https://backendparavalen.herokuapp.com/api/admin/users', {
+                const res = await axios.get('https://luxurydrinks.herokuapp.com/api/admin/users', {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
                 dispatch({ type: 'GET_USERS', payload: res.data.users })
@@ -64,7 +64,7 @@ const authActions = {
         return async (dispatch, getState) => {
             try {
                 // const token = localStorage.getItem('token')
-                const res = await axios.delete(`https://backendparavalen.herokuapp.com/api/admin/user/${userId}`, {
+                const res = await axios.delete(`https://luxurydrinks.herokuapp.com/api/admin/user/${userId}`, {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
                 dispatch({ type: 'DELETE_USER', payload: res.data.deletedId })

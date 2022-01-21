@@ -3,13 +3,16 @@ const authReducers = (
         user: null,
         token: null,
         img: null,
+        email: null,
+        firstName: null,
+        age: null,
         role: null,
         users: [],
     }, action) => {
     if (action.type === 'LOG_USER') {
         return {
             ...state,
-            user: action.payload
+            user: action.payload,
         }
 
     } else if (action.type === 'LOG_OUT') {

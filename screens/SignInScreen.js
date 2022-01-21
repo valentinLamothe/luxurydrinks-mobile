@@ -46,7 +46,7 @@ const submitForm = () => {
           } else {
               showMessage({
                   type: 'success',
-                  message: `Bienvenido ${response.data.response.user.firstName}!`,
+                  message: `Bienvenido ${response.data.response.firstName}!`,
                   icon: 'success',
                   backgroundColor: 'black',
                   color: 'white'
@@ -60,7 +60,7 @@ const submitForm = () => {
   }
 }
 
-    console.log("clg signin screen: ",props)
+    console.log('ProfileScreen',props)
     return (
       <>
 
@@ -72,7 +72,7 @@ const submitForm = () => {
                 <Text style={{fontSize: 30, fontWeight: '900', width: '80%'}}>Nombre: <Text style={{color: '#c8102e'}}>{props.user.firstName || props.user.newUser.firstName}</Text></Text>
                 <Text style={{fontSize: 30, fontWeight: '900', width: '80%'}}>Email: <Text style={{color: '#c8102e'}}>{props.user.email || props.user.newUser.email}</Text></Text>
                 <Text style={{fontSize: 30, fontWeight: '900', width: '80%', marginBottom: '5%'}}>Edad: <Text style={{color: '#c8102e'}}>{props.user.age || props.user.newUser.age}</Text></Text>
-                <Image source={{uri: (props.user.userImg || props.user.newUser.userImg)}} style={{width: '70%', height: '43%', borderRadius: 200, borderWidth: 3}} />
+                <Image source={{uri: (props.user.img || props.user.newUser.img)}} style={{width: '70%', height: '43%', borderRadius: 200, borderWidth: 3}} />
           <TouchableOpacity onPress={() => props.navigation.navigate('Inicio')} style={{backgroundColor:'#c8102e', padding: '5%', borderRadius: 5, marginTop: '10%'}}>
             <Text style={{color: 'white', fontSize: 20, fontWeight: '900'}}>Volver al sitio</Text>
           </TouchableOpacity>
